@@ -36,7 +36,7 @@
         </div>
     </header>
     <!-- Main page content-->
-    <?php $all = getAllReceiver Orders(); ?>
+    <?php $all = getAllReceiverOrders(); ?>
     <div class="container-fluid px-4">
         <div class="card">
             <div class="card-body">
