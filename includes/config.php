@@ -56,6 +56,11 @@
 	$PATH_ADMIN_SERVICE = $PATH_ADMIN . 'service/';
 	$PATH_ADMIN_SERVICE_TYPE = $PATH_ADMIN . 'service_type/';
 
+	$PATH_ADMIN_DONATOR = $PATH_ADMIN . 'donator/';
+	$PATH_ADMIN_DONATION = $PATH_ADMIN . 'donation/';
+	$PATH_ADMIN_RECEIVER = $PATH_ADMIN . 'receiver/';
+	$PATH_ADMIN_RECEIVER_ORDER = $PATH_ADMIN . 'receiver_order/';
+
 	$PATH_ADMIN_AUTHOR = $PATH_ADMIN . 'author/';
 	$PATH_ADMIN_BOOK = $PATH_ADMIN . 'book/';
 	$PATH_ADMIN_COLLEGE = $PATH_ADMIN . 'college/';
