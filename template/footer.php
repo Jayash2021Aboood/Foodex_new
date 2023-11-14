@@ -13,7 +13,7 @@
                 </div>
             </div>
             <div class="col-sm-6 text-md-end small">
-                <img src="<?php echo $PATH_SERVER ?>assets/img/logo-wide-white.png" alt="">
+                <img src="<?php echo $PATH_SERVER ?>assets/img/logo-wide-white1.png" alt="">
                 <!-- <a href="#!">Privacy Policy</a>
                 ·
                 <a href="#!">Terms &amp; Conditions</a> -->
