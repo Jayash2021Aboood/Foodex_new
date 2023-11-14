@@ -3,7 +3,7 @@
 // ====================================================
 // ======================= Start Receiver Order Part ===========
 
-class Receiver Order
+class ReceiverOrder
 {
 	public $id;
 	public $donation_id;
@@ -30,29 +30,29 @@ class Receiver Order
 
 }
 
-function getAllReceiver Orders()
+function getAllReceiverOrders()
 {
 	return selectAndOrder("select * from receiver_order","id","desc");
 }
 
-function getReceiver OrderById($id)
+function getReceiverOrderById($id)
 {
 	return selectById("*","receiver_order", $id);
 }
 
-function getReceiver OrderByName($search)
+function getReceiverOrderByName($search)
 {
 	return select("SELECT * FROM receiver_order WHERE name like '%$search%' and active = 1");
 }
 
-function addReceiver Order( $donation_id, $donator_id, $receiver_id, $order_date)
+function addReceiverOrder( $donation_id, $donator_id, $receiver_id, $order_date)
 {
     $sql = 
 		"INSERT INTO receiver_order VALUES(null,
 $donation_id,$donator_id,$receiver_id,'$order_date')";	return query($sql);
 }
 
-function updateReceiver Order( $id, $donation_id, $donator_id, $receiver_id, $order_date)
+function updateReceiverOrder( $id, $donation_id, $donator_id, $receiver_id, $order_date)
 {
     $sql = 
 		"UPDATE receiver_order SET 
@@ -64,7 +64,7 @@ function updateReceiver Order( $id, $donation_id, $donator_id, $receiver_id, $or
     return query($sql);
 }
 
-function deleteReceiver Order($id)
+function deleteReceiverOrder($id)
 {   
      return query("DELETE FROM receiver_order WHERE id = $id");
 }
