@@ -45,7 +45,6 @@
                             <th><?php echo lang("Location"); ?></th>
                             <th><?php echo lang("Phone"); ?></th>
                             <th><?php echo lang("Email"); ?></th>
-                            <th><?php echo lang("Password"); ?></th>
                             <th><?php echo lang("Active"); ?></th>
                             <th><?php echo lang("Actions"); ?></th>
                         </tr>
@@ -92,7 +91,6 @@
                                   <td> <?php echo($row['location']); ?> </td>
                                   <td> <?php echo($row['phone']); ?> </td>
                                   <td> <?php echo($row['email']); ?> </td>
-                                  <td> <?php echo($row['password']); ?> </td>
                                   <td> <input type="checkbox" <?php if ($row['active'] == 1) echo 'checked'; ?>> </td>
     
                             <td>
@@ -108,6 +106,23 @@
                                     href="detail.php?id=<?php echo($row['id']); ?>">
                                     <i class="text-success" data-feather="eye"></i>
                                 </a>
+                                <?php if ($row['active'] == 0) { ?>
+                                        <form method="post" >
+                                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                            <button name="changeStateToAccept" class="btn btn-info btn-sm" type="submit" 
+                                            formaction="receiverManager.php?id=<?php echo $row['id']; ?>"> <?php echo lang("Accept"); ?>
+                                            </button>
+                                        </form>
+                                    <?php } ?>
+                                    <?php if ($row['active'] == 1) { ?>
+                                        <form method="post">
+                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                            <button name="changeStateToReject" class="btn btn-pink btn-sm" type="submit" 
+                                            formaction="receiverManager.php?id=<?php echo $row['id']; ?>"> <?php echo lang("Reject"); ?> </button>
+                                        </form>
+                                    <?php } ?>
+
+
                             </td>
                         </tr>
                         <?php }?>

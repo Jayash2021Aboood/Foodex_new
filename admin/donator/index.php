@@ -1,10 +1,10 @@
 <?php
-  session_start();
-  include('../../includes/lib.php');
-  include_once('../../includes/donator.php');
-  checkAdminSession();
+session_start();
+include('../../includes/lib.php');
+include_once('../../includes/donator.php');
+checkAdminSession();
 
-  $pageTitle = lang("Donators");
+$pageTitle = lang("Donators");
 ?>
 
 <?php include('../../template/header.php'); ?>
@@ -46,7 +46,6 @@
                             <th><?php echo lang("Corporate Field"); ?></th>
                             <th><?php echo lang("Phone"); ?></th>
                             <th><?php echo lang("Email"); ?></th>
-                            <th><?php echo lang("Password"); ?></th>
                             <th><?php echo lang("Active"); ?></th>
                             <th><?php echo lang("Actions"); ?></th>
                         </tr>
@@ -83,37 +82,50 @@
                                             </td>
                                         </tr> -->
                         <?php
-                                        foreach($all as $row)
-                                        {
+                        foreach ($all as $row) {
 
-                                        ?>
+                        ?>
 
-                        <tr>
-                                <td> <?php echo($row['id']); ?> </td>
-                                  <td> <?php echo($row['type']); ?> </td>
-                                  <td> <?php echo($row['name']); ?> </td>
-                                  <td> <?php echo($row['corporate_field']); ?> </td>
-                                  <td> <?php echo($row['phone']); ?> </td>
-                                  <td> <?php echo($row['email']); ?> </td>
-                                  <td> <?php echo($row['password']); ?> </td>
-                                  <td> <input type="checkbox" <?php if ($row['active'] == 1) echo 'checked'; ?>> </td>
-    
-                            <td>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark me-2"
-                                    href="edit.php?id=<?php echo($row['id']); ?>">
-                                    <i class="text-primary" data-feather="edit"></i>
-                                </a>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark"
-                                    href="delete.php?id=<?php echo($row['id']); ?>">
-                                    <i class="text-danger" data-feather="trash-2"></i>
-                                </a>
-                                <a class="btn btn-datatable btn-icon btn-transparent-dark"
-                                    href="detail.php?id=<?php echo($row['id']); ?>">
-                                    <i class="text-success" data-feather="eye"></i>
-                                </a>
-                            </td>
-                        </tr>
-                        <?php }?>
+                            <tr>
+                                <td> <?php echo ($row['id']); ?> </td>
+                                <td> <?php echo ($row['type']); ?> </td>
+                                <td> <?php echo ($row['name']); ?> </td>
+                                <td> <?php echo ($row['corporate_field']); ?> </td>
+                                <td> <?php echo ($row['phone']); ?> </td>
+                                <td> <?php echo ($row['email']); ?> </td>
+                                <td>
+                                    <input type="checkbox" <?php if ($row['active'] == 1) echo 'checked'; ?>>
+
+                                </td>
+
+                                <td>
+                                    <a class="btn btn-datatable btn-icon btn-transparent-dark me-2" href="edit.php?id=<?php echo ($row['id']); ?>">
+                                        <i class="text-primary" data-feather="edit"></i>
+                                    </a>
+                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="delete.php?id=<?php echo ($row['id']); ?>">
+                                        <i class="text-danger" data-feather="trash-2"></i>
+                                    </a>
+                                    <a class="btn btn-datatable btn-icon btn-transparent-dark" href="detail.php?id=<?php echo ($row['id']); ?>">
+                                        <i class="text-success" data-feather="eye"></i>
+                                    </a>
+                                    <?php if ($row['active'] == 0) { ?>
+                                        <form method="post" action="donatorManager.php">
+                                            <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                            <button name="changeStateToAccept" class="btn btn-info btn-sm" type="submit" 
+                                            formaction="donatorManager.php?id=<?php echo $row['id']; ?>"> <?php echo lang("Accept"); ?>
+                                            </button>
+                                        </form>
+                                    <?php } ?>
+                                    <?php if ($row['active'] == 1) { ?>
+                                        <form method="post">
+                                        <input type="hidden" name="id" value="<?php echo $row['id']; ?>">
+                                            <button name="changeStateToReject" class="btn btn-pink btn-sm" type="submit" 
+                                            formaction="donatorManager.php?id=<?php echo $row['id']; ?>"> <?php echo lang("Reject"); ?> </button>
+                                        </form>
+                                    <?php } ?>
+                                </td>
+                            </tr>
+                        <?php } ?>
 
 
                     </tbody>
@@ -122,8 +134,7 @@
         </div>
     </div>
     <!-- Create Donator modal-->
-    <div class="modal fade" id="createDonatorModal" tabindex="-1" role="dialog" aria-labelledby="createDonatorModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="createDonatorModal" tabindex="-1" role="dialog" aria-labelledby="createDonatorModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -135,14 +146,12 @@
                         <div class="mb-0">
                             <label class="mb-1 small text-muted" for="formDonatorName">Donator
                                 Name</label>
-                            <input class="form-control" id="formDonatorName" type="text"
-                                placeholder="Enter Donator name..." />
+                            <input class="form-control" id="formDonatorName" type="text" placeholder="Enter Donator name..." />
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-danger-soft text-danger" type="button"
-                        data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-danger-soft text-danger" type="button" data-bs-dismiss="modal">Cancel</button>
                     <button class="btn btn-primary-soft text-primary" type="button">Create New
                         Donator</button>
                 </div>
@@ -150,8 +159,7 @@
         </div>
     </div>
     <!-- Edit Donator modal-->
-    <div class="modal fade" id="editDonatorModal" tabindex="-1" role="dialog" aria-labelledby="editDonatorModalLabel"
-        aria-hidden="true">
+    <div class="modal fade" id="editDonatorModal" tabindex="-1" role="dialog" aria-labelledby="editDonatorModalLabel" aria-hidden="true">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
@@ -163,14 +171,12 @@
                         <div class="mb-0">
                             <label class="mb-1 small text-muted" for="formDonatorName">Donator
                                 Name</label>
-                            <input class="form-control" id="formDonatorName" type="text"
-                                placeholder="Enter Donator name..." value="Sales" />
+                            <input class="form-control" id="formDonatorName" type="text" placeholder="Enter Donator name..." value="Sales" />
                         </div>
                     </form>
                 </div>
                 <div class="modal-footer">
-                    <button class="btn btn-danger-soft text-danger" type="button"
-                        data-bs-dismiss="modal">Cancel</button>
+                    <button class="btn btn-danger-soft text-danger" type="button" data-bs-dismiss="modal">Cancel</button>
                     <button class="btn btn-primary-soft text-primary" type="button">Save
                         Changes</button>
                 </div>
@@ -183,5 +189,3 @@
 
 
 <?php include('../../template/footer.php'); ?>
-
-
