@@ -77,6 +77,17 @@ function loginAdmin($username, $password)
 // ====================================================
 // ====================  Addtional Method ==============
 
+
+function getAllDonationsByDonatorID($donator_id)
+{
+	return selectByCondition("*","donation","where  donator_id = '$donator_id'");
+}
+
+function getAllOrdersByReceiverID($receiver_id)
+{
+	return selectByCondition("*","receiver_order","where  receiver_id = '$receiver_id'");
+}
+
 // دالة لجلب الخدمات اعتماد على نوع الخدمة
 function getAllServicesByTypeID($service_type_id)
 {
@@ -191,6 +202,21 @@ function getAllBooksBySearch($search_term, $limit = null)
                     OR publisher.name LIKE '%$search_term%'
                     OR section.name LIKE '%$search_term%'
                     OR language.name LIKE '%$search_term%' ";
+
+    if(!is_null($limit)){
+        $sql .= "LIMIT $limit";
+    }
+    return select($sql);
+}
+
+function getAllDonationsBySearch($search_term, $limit = null)
+{
+    $sql = " SELECT donation.*,
+                           donator.name AS donator_name
+                    FROM donation
+                    JOIN donator ON donation.donator_id = donator.id
+                    WHERE CONCAT(donation.id, donation.name, donation.added_date, donation.details, donator.name) LIKE '%$search_term%'
+                    OR donation.name LIKE '%$search_term%'";
 
     if(!is_null($limit)){
         $sql .= "LIMIT $limit";
