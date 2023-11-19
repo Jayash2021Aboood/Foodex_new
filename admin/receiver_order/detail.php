@@ -9,7 +9,7 @@
   checkAdminSession();
 
   $pageTitle = lang("Receiver Order Details");
-  $row = new Receiver Order(null);
+  $row = new ReceiverOrder(null);
   include('../../template/header.php');
 
 
@@ -19,7 +19,7 @@
     if(isset($_GET['id']))
     {
       $id = $_GET['id'];
-      $result = getReceiver OrderById($id);
+      $result = getReceiverOrderById($id);
 
       if( count( $result ) > 0)
         $row = $result[0];
@@ -46,7 +46,7 @@
       if(isset($_GET['id']))
       {
         $id = $_POST['id'];
-        $delete = deleteReceiver Order($id);
+        $delete = deleteReceiverOrder($id);
         if($delete ==  true)
         {
   

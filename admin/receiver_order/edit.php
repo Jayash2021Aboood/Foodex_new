@@ -22,7 +22,7 @@
     {
       $_SESSION["message"] = '';
       $id = $_GET['id'];
-      $result = getReceiver OrderById($id);
+      $result = getReceiverOrderById($id);
 
       if( count( $result ) > 0)
       {
@@ -73,17 +73,17 @@
       if(count($errors) == 0)
       {
 
-        $result = getReceiver OrderById($id);
+        $result = getReceiverOrderById($id);
         if( count( $result ) > 0)
           $row = $result[0];
         
-        $update = updateReceiver Order( $id,  $donation_id,  $donator_id,  $receiver_id,  $order_date, );
+        $update = updateReceiverOrder( $id,  $donation_id,  $donator_id,  $receiver_id,  $order_date, );
         if($update ==  true)
         {
   
           $_SESSION["message"] = lang("Receiver Order Updated successfuly!");
           $_SESSION["success"] = lang("Receiver Order Updated successfuly!");
-          header('Location:'. $PATH_EMPLOYEE_RECEIVER ORDER .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_RECEIVER_ORDER .'index.php');
           exit();
         }
         else

@@ -43,7 +43,7 @@
   
       if(count($errors) == 0)
       {
-        $add = addReceiver Order(
+        $add = addReceiverOrder(
                                     $donation_id,
                                     $donator_id,
                                     $receiver_id,
@@ -53,7 +53,7 @@
         {
           $_SESSION["message"] = lang("Receiver Order Added successfuly!");
           $_SESSION["success"] = lang("Receiver Order Added successfuly!");
-          header('Location:'. $PATH_EMPLOYEE_RECEIVER ORDER .'index.php');
+          header('Location:'. $PATH_EMPLOYEE_RECEIVER_ORDER .'index.php');
           exit();
         }
         else
