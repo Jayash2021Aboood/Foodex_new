@@ -23,12 +23,6 @@
                             <?php echo lang("Donation List"); ?>
                         </h1>
                     </div>
-                    <div class="col-12 col-xl-auto mb-3">
-                        <a class="btn btn-sm btn-light text-primary" href="create.php">
-                            <i class="me-1" data-feather="plus"></i>
-                            <?php echo lang("Create New"); ?>
-                        </a>
-                    </div>
                 </div>
             </div>
         </div>
