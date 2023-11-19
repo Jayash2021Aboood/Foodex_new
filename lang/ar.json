@@ -270,6 +270,11 @@
 "Password Recovery" : "استعادة كلمة المرور",
 "Enter your email address and we will send your password to your email." : "قم بادخال الايمل الخاص بك وسوف نقوم بارسال كلمة مرورك القديمة لهذا الايميل",
 "Return to login" : "الرجوع لتسجيل الدخول",
-"Send Password" : "ارسال كلمة المرور"
+"Send Password" : "ارسال كلمة المرور",
+"Accept" : "قبول",
+"Reject" : "رفض",
+"Latest Donations" : "Latest Donations",
+"Donations List" : "Donations List",
+"Search in donations ..." : "Search in donations ..."
 
 }
