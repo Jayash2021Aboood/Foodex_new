@@ -50,36 +50,16 @@
             </div>
         </div>
         <div class="row">
-            <div class="col-xl-3 col-md-6 mb-4">
-                <!-- Dashboard info widget 1-->
-                <div class="card border-start-lg border-start-primary h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-grow-1">
-                                <div class="small fw-bold text-primary mb-1">Earnings (monthly)</div>
-                                <div class="h5">R.S
-                                    <?php //echo (select("select sum(paid_price) as total from booking;")[0])['total']; ?>
-                                </div>
-                                <div class="text-xs fw-bold text-success d-inline-flex align-items-center">
-                                    <i class="me-1" data-feather="trending-up"></i>
-                                    12%
-                                </div>
-                            </div>
-                            <div class="ms-2"><i class="fas fa-dollar-sign fa-2x text-gray-200"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-
+            
             <div class="col-xl-3 col-md-6 mb-4">
                 <!-- Dashboard info widget 2-->
                 <div class="card border-start-lg border-start-pink h-100">
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="fw-bold text-pink mb-3 text-center">Books (count)</div>
+                                <div class="fw-bold text-pink mb-3 text-center">Donator (count)</div>
                                 <div class="h5 text-center">
-                                    <?php echo (select("select count(id) as total from book;")[0])['total']; ?>
+                                    <?php echo (select("select count(id) as total from donator;")[0])['total']; ?>
                                 </div>
                                 <!-- <div class="text-xs fw-bold text-danger d-inline-flex align-items-center">
                                     <i class="me-1" data-feather="trending-down"></i>
@@ -98,9 +78,9 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="fw-bold text-secondary mb-3 text-center">Employee (count)</div>
+                                <div class="fw-bold text-secondary mb-3 text-center">Receivers (count)</div>
                                 <div class="h5 text-center">
-                                    <?php echo (select("select count(id) as total from employee;")[0])['total']; ?>
+                                    <?php echo (select("select count(id) as total from receiver;")[0])['total']; ?>
                                 </div>
                                 <!-- <div class="text-xs fw-bold text-danger d-inline-flex align-items-center">
                                     <i class="me-1" data-feather="trending-down"></i>
@@ -119,9 +99,9 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="fw-bold text-success mb-3 text-center">Student (count)</div>
+                                <div class="fw-bold text-success mb-3 text-center">Donations (count)</div>
                                 <div class="h5 text-center">
-                                    <?php echo (select("select count(id) as total from student;")[0])['total']; ?>
+                                    <?php echo (select("select count(id) as total from donation;")[0])['total']; ?>
                                 </div>
                                 <!-- <div class="text-xs fw-bold text-danger d-inline-flex align-items-center">
                                     <i class="me-1" data-feather="trending-down"></i>
@@ -140,9 +120,9 @@
                     <div class="card-body">
                         <div class="d-flex align-items-center">
                             <div class="flex-grow-1">
-                                <div class="fw-bold text-orange mb-3 text-center">Sections (count)</div>
+                                <div class="fw-bold text-orange mb-3 text-center">Orders (count)</div>
                                 <div class="h5 text-center">
-                                    <?php echo (select("select count(id) as total from section;")[0])['total']; ?>
+                                    <?php echo (select("select count(id) as total from receiver_order;")[0])['total']; ?>
                                 </div>
                                 <!-- <div class="text-xs fw-bold text-danger d-inline-flex align-items-center">
                                     <i class="me-1" data-feather="trending-down"></i>
@@ -150,64 +130,6 @@
                                 </div> -->
                             </div>
                             <!-- <div class="ms-2"><i class="fas fa-tag fa-2x text-gray-200"></i></div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6 mb-4">
-                <!-- Dashboard info widget 2-->
-                <div class="card border-start-lg border-start-info h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-grow-1">
-                                <div class="fw-bold text-info mb-3 text-center">Authors (count)</div>
-                                <div class="h5 text-center">
-                                    <?php echo (select("select count(id) as total from author;")[0])['total']; ?>
-                                </div>
-                                <!-- <div class="text-xs fw-bold text-danger d-inline-flex align-items-center">
-                                    <i class="me-1" data-feather="trending-down"></i>
-                                    3%
-                                </div> -->
-                            </div>
-                            <!-- <div class="ms-2"><i class="fas fa-tag fa-2x text-gray-200"></i></div> -->
-                        </div>
-                    </div>
-                </div>
-            </div>
-
-            <div class="col-xl-3 col-md-6 mb-4">
-                <!-- Dashboard info widget 3-->
-                <div class="card border-start-lg border-start-success h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-grow-1">
-                                <div class="small fw-bold text-success mb-1">Clicks</div>
-                                <div class="h5">11,291</div>
-                                <div class="text-xs fw-bold text-success d-inline-flex align-items-center">
-                                    <i class="me-1" data-feather="trending-up"></i>
-                                    12%
-                                </div>
-                            </div>
-                            <div class="ms-2"><i class="fas fa-mouse-pointer fa-2x text-gray-200"></i></div>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <div class="col-xl-3 col-md-6 mb-4">
-                <!-- Dashboard info widget 4-->
-                <div class="card border-start-lg border-start-info h-100">
-                    <div class="card-body">
-                        <div class="d-flex align-items-center">
-                            <div class="flex-grow-1">
-                                <div class="small fw-bold text-info mb-1">Conversion rate</div>
-                                <div class="h5">1.23%</div>
-                                <div class="text-xs fw-bold text-danger d-inline-flex align-items-center">
-                                    <i class="me-1" data-feather="trending-down"></i>
-                                    1%
-                                </div>
-                            </div>
-                            <div class="ms-2"><i class="fas fa-percentage fa-2x text-gray-200"></i></div>
                         </div>
                     </div>
                 </div>
