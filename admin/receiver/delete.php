@@ -141,7 +141,7 @@
                                 <!-- Form Group (password)-->
                                 <div class="col-md-4 mb-3">
                                     <label class="small mb-1" for="password"><?php echo lang("Password"); ?></label>
-                                    <input class="form-control" id="password" name="password" type="text" placeholder="<?php echo lang("Password"); ?>"
+                                    <input class="form-control" id="password" name="password" type="password" placeholder="<?php echo lang("Password"); ?>"
                                         value="<?php echo $row['password'];?>" readonly />
                                 </div>
                                 <div class="form-check">
