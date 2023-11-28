@@ -2,6 +2,7 @@
   session_start();
   include('includes/lib.php');
   include('includes/donation.php');
+  include('includes/donator.php');
   $pageTitle = "Home";
 
   ?>
@@ -38,11 +39,12 @@
         <!-- Nested row for non-featured blog posts-->
         <div class="row">
             <?php
-                $all = getAllDonationsBySearch("",6);
+                $all = select("select * from donation where state like 'available'");
                 if(!(count($all) > 0)) echo /*html*/'<div class="col text-center"> <h2 class="text-danger" >No Donations Found To Display. </h2></div>'; 
                 else{ 
                     foreach($all as  $row)
                     {
+                        $donator = getDonatorById($row['donator_id'])[0];
             ?>
             <div class="col-lg-4 col-md-6 col-sm-12">
                 <!-- Blog post-->
@@ -51,17 +53,22 @@
                             src="<?php echo $PATH_PHOTOES . $row['photo'] ?? 'book_default.jpg'; ?>"
                             alt="<?php echo $row['photo'] ?>"></a>
                     <div class="card-body">
-                        <div class="small text-muted"><?php echo $row['donator_name']; ?></div>
+                        <div class="small text-muted"><?php echo $donator['name']; ?></div>
                         <h2 class="card-title h4"><?php echo $row['name']; ?></h2>
                         <p class="card-text"><?php echo $row['details']; ?></p>
                         <p class="card-text"><?php echo displayAvailableCount($row['quantity']); ?>
                         </p>
                         <div class="small text-muted"><?php echo $row['added_date']; ?></div>
-                        <div class="text-end">
-                            <a class="btn btn-primary btn-sm"
-                                href="donation.php?id=<?php echo $row['id'] ?>"><?php echo lang('Read more'); ?> →</a>
-
-                        </div>
+                        <?php if(isReceiver() || isLogin() == false){ ?>
+                        <form action="<?php echo $PATH_RECEIVER; ?>orderManager.php" method="post">
+                            <div class="text-end">
+                                <input type="hidden" name="donation_id" value="<?php echo $row['id'] ?>" >
+                                <button class="btn btn-primary btn-sm" type="submit" name="orderDonation">
+                                    <?php echo lang('Order Now'); ?> →</button>
+                                
+                            </div>
+                        </form>
+                        <?php }?>
                     </div>
                 </div>
             </div>
