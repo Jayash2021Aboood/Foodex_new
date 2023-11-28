@@ -14,12 +14,12 @@ if (isset($_SESSION['user']))
         }
         else if($_SESSION['userType'] == 'e')
         {
-            header('Location: employee/index.php');
+            header('Location: donator/index.php');
             exit();
         }
-        else if($_SESSION['userType'] == 's')
+        else if($_SESSION['userType'] == 'r')
         {
-            header('Location: student/index.php');
+            header('Location: receiver/index.php');
             exit();
         }
     }
@@ -72,17 +72,25 @@ if (isset($_SESSION['user']))
                 $errors[] = lang("No Admin found with this data");
             }
         }
-        else if($userType == 'e')
+        else if($userType == 'd')
         {
-            $employees = select("select * from employee where email like '$email' and password like '$password';");
-            if(count($employees) > 0)
+            $donators = select("select * from donator where email like '$email' and password like '$password';");
+            if(count($donators) > 0)
             {
 
-                $_SESSION["userID"] = $employees[0]['id'];
+                if($donators[0]['active'] == false){
+                    $_SESSION["message"] = "your account is not active ... contact to adminstrator";
+                    $_SESSION["fail"] = "your account is not active ... contact to adminstrator";
+                    header('Location: login.php');
+                    exit();
+                }
+
+
+                $_SESSION["userID"] = $donators[0]['id'];
                 $_SESSION["user"] = $email;
-                $_SESSION["userType"] = 'e';
-                $_SESSION['success'] = "Welcome ".$employees[0]['name'] ;
-                header('Location: employee/index.php');
+                $_SESSION["userType"] = 'd';
+                $_SESSION['success'] = "Welcome ".$donators[0]['name'] ;
+                header('Location: donator/index.php');
                 exit();
 
                 // if($employees[0]['state'] == 'reject'){
@@ -114,28 +122,36 @@ if (isset($_SESSION['user']))
             }
             else
             {
-                $_SESSION["message"] = lang("No Employee found with this data");
-                $_SESSION["fail"] = lang("No Employee found with this data");
-                $errors[] = lang("No Employee found with this data");
+                $_SESSION["message"] = lang("No Donator found with this data");
+                $_SESSION["fail"] = lang("No Donator found with this data");
+                $errors[] = lang("No Donator found with this data");
             }
         }
-        else if($userType == 's')
+        else if($userType == 'r')
         {
-            $students = select("select * from student where email like '$email' and password like '$password';");
-            if(count($students) > 0)
+            $receivers = select("select * from receiver where email like '$email' and password like '$password';");
+            if(count($receivers) > 0)
             {
-                    $_SESSION["userID"] = $students[0]['id'];
+
+                    if($receivers[0]['active'] == false){
+                        $_SESSION["message"] = "your account is not active ... contact to adminstrator";
+                        $_SESSION["fail"] = "your account is not active ... contact to adminstrator";
+                        header('Location: login.php');
+                        exit();
+                    }
+
+                    $_SESSION["userID"] = $receivers[0]['id'];
                     $_SESSION["user"] = $email;
-                    $_SESSION["userType"] = 's';
-                    $_SESSION['success'] = lang("Welcome ") . $students[0]['name'] ;
-                    header('Location: student/index.php');
+                    $_SESSION["userType"] = 'r';
+                    $_SESSION['success'] = lang("Welcome ") . $receivers[0]['name'] ;
+                    header('Location: receiver/index.php');
                     exit();
             }
             else
             {
-                $_SESSION["message"] = lang("No Student found with this data");
-                $_SESSION["fail"] = lang("No Student found with this data");
-                $errors[] = lang("No Student found with this data");
+                $_SESSION["message"] = lang("No Receiver found with this data");
+                $_SESSION["fail"] = lang("No Receiver found with this data");
+                $errors[] = lang("No Receiver found with this data");
             }
         }
         else
@@ -218,7 +234,8 @@ if (isset($_SESSION['user']))
                             </div>
                             <!-- Form Group (login box)-->
                             <div class="d-flex align-items-center justify-content-between mt-4 mb-0">
-                                <a class="small" href="forget_password.php"><?php echo lang("Forgot Password?"); ?></a>
+                                <!-- <a class="small" href="forget_password.php"><?php //echo lang("Forgot Password?"); ?></a> -->
+                                <a class="small" href="signup.php"><?php echo lang("New Registeration"); ?></a>
                                 <button class="btn btn-primary" name="login"
                                     type="submit"><?php echo lang("Login"); ?></button>
                             </div>
