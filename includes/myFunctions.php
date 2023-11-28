@@ -52,10 +52,10 @@
   function displayAvailableCount($available_copies_count)
   {
     if(!isset($available_copies_count)){
-      return '<span class="badge bg-danger"> '. lang("Available"). $available_copies_count.' </span>';
+      return '<span class="badge bg-danger"> '. lang("Available"). ' ' . $available_copies_count.' </span>';
     } 
     if($available_copies_count > 0){
-      return '<span class="badge bg-success"> '. lang("Available"). $available_copies_count . ' </span>';
+      return '<span class="badge bg-success"> '. lang("Available"). ' ' . $available_copies_count . ' </span>';
     }
     // else if($available_copies_count > 50){
     //   return "primary";
@@ -64,7 +64,7 @@
     //   return "warning";
     // }
     else{
-      return '<span class="badge bg-danger"> '. lang("Available"). $available_copies_count.' </span>';
+      return '<span class="badge bg-danger"> '. lang("Available"). ' ' . $available_copies_count.' </span>';
     }
   }
 
