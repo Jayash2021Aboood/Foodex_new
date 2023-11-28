@@ -25,6 +25,8 @@
 	// $PATH_CUSTOMER 			= $PATH_SERVER . 'customer/';
 	$PATH_STUDENT 			= $PATH_SERVER . 'student/';
 	$PATH_EMPLOYEE 			= $PATH_SERVER . 'employee/';
+	$PATH_RECEIVER 			= $PATH_SERVER . 'receiver/';
+	$PATH_DONATOR 			= $PATH_SERVER . 'donator/';
 
 	$PATH_EMPLOYEE_AUTHOR = $PATH_EMPLOYEE . 'author/';
 	$PATH_EMPLOYEE_BOOK = $PATH_EMPLOYEE . 'book/';
@@ -133,7 +135,7 @@
 			}
   }
 
-  function checkEmployeeSession($path = "http://localhost/Foodex_new/" , $page = "login.php")
+  function checkDonatorSession($path = "http://localhost/Foodex_new/" , $page = "login.php")
   {
             if (!isset($_SESSION['user']))
             {
@@ -143,23 +145,28 @@
 			{
 				header('Location:'. $path . $page);
 			} 
-			if($_SESSION['userType'] != 'e')
+			if($_SESSION['userType'] != 'd')
 			{
 				header('Location:'. $path . $page);
 			}
   }
 
-  function checkStudentSession($path = "http://localhost/Foodex_new/" , $page = "login.php")
+  function checkReceiverSession($path = "http://localhost/Foodex_new/" , $page = "login.php")
   {
-            if (!isset($_SESSION['user']))
-            {
+
+			if (!isset($_SESSION['userID']))
+			{
+				header('Location:'. $path . $page);
+			}
+			if (!isset($_SESSION['user']))
+			{
 				header('Location:'. $path . $page);
             }
 			if (!(isset($_SESSION['userType'])))
 			{
 				header('Location:'. $path . $page);
 			} 
-			if($_SESSION['userType'] != 's')
+			if($_SESSION['userType'] != 'r')
 			{
 				header('Location:'. $path . $page);
 			}
@@ -171,7 +178,7 @@
 	{
 		if(isset($_SESSION['userType']))
 		{
-			if($_SESSION['userType'] == 'a' || $_SESSION['userType'] == 's' || $_SESSION['userType'] == 'e')
+			if($_SESSION['userType'] == 'a' || $_SESSION['userType'] == 'r' || $_SESSION['userType'] == 'd')
 			{
 				return true;
 			}
@@ -195,8 +202,10 @@
   function isAdmin() { if(getLoginType() == 'a') return true; }
 //   function isEngineer() { if(getLoginType() == 'e') return true; }
   function isEmployee() { if(getLoginType() == 'e') return true; }
+  function isDonator() { if(getLoginType() == 'd') return true; }
 //   function isCustomer() { if(getLoginType() == 'c') return true; }
   function isStudent() { if(getLoginType() == 's') return true; }
+  function isReceiver() { if(getLoginType() == 'r') return true; }
   function getLoginEmail() { return $_SESSION['user'] ;}
 
 //   function checkAdminSession($path = "http://localhost/Foodex_new/" , $page = "login.php")
