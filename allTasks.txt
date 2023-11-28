@@ -1,4 +1,31 @@
 
 
 =================== Create Foodex New Website Project =======================
+admin cpanel:
+1- accept or reject Donatror and receiver. ============== Done.
+2- Main Page Dashboard.
 
+donator cpanel:
+1- index page.
+2- My Donation page.
+3- Add Donation page.
+4- Profile page.
+
+
+receiver cpanel:
+1- index page.
+2- My Order page.
+3- Add Order page.
+4- Profile page.
+
+
+General: 
+1- Login page.============================================= Done
+2- Create Donator page.==================================== Done 
+3- Create receiver page.=================================== Done
+4- Check if Account is Active in Login. =================== Done 
+5- translate Profile Pages.
+6- in Create Donator Page Hide Column based on Choose.
+7- Remove UnWanted Files.
+8- Add FAQ Page.
+9- Add Validation For All Input Pages
