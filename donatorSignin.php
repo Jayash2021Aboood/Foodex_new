@@ -141,7 +141,7 @@
                     </div>
                     <div class="card-body">
                         <!-- Registration form-->
-                        <form action="" method="POST" enctype="multipart/form-data">
+                        <form id="myForm" action="" method="POST" enctype="multipart/form-data">
                             <!-- Form Row-->
                             <div class="row gx-3 mb-3">
                                 <!-- Form Group (type)-->

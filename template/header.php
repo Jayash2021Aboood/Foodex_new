@@ -32,6 +32,8 @@
         crossorigin="anonymous"></script>
     <script src="<?php echo $PATH_SERVER ?>js/feather-icons/feather.min.js" crossorigin="anonymous"></script>
     <script src="<?php echo $PATH_SERVER ?>js/jquery3.6.0.js"></script>
+    <script src="<?php echo $PATH_SERVER ?>js/jquery.validation/1.16.0/jquery.validate.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/jquery.validation/1.16.0/additional-methods.min.js"></script>
 </head>
 
 <!-- <body dir="rtl" class="nav-fixed bg-white"> -->

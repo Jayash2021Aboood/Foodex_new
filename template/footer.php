@@ -9,7 +9,7 @@
                 </div>
                 <div>
                     <i class="fa-solid fa-phone"></i>
-                    777155986
+                    009665xxxxxxxxx
                 </div>
             </div>
             <div class="col-sm-6 text-md-end small">
@@ -35,8 +35,7 @@
 </div>
 </div>
 
-<script data-cfasync="false"
-    src="<?php echo $PATH_SERVER ?>/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
+<script data-cfasync="false" src="<?php echo $PATH_SERVER ?>/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js">
 </script>
 <script src="<?php echo $PATH_SERVER ?>js/bootstrap/bootstrap.bundle.min.js" crossorigin="anonymous">
 </script>
@@ -56,13 +55,76 @@
 <!-- Include Rich Textbox Editor -->
 
 <script>
-$(document).ready(function() {
-    "use strict";
-    $('#successmessage').delay(3000).hide(1000);
-    $('#failmessage').delay(3000).hide(1000);
+    $(document).ready(function() {
+        "use strict";
+        $('#successmessage').delay(3000).hide(1000);
+        $('#failmessage').delay(3000).hide(1000);
 
-});
+    });
 </script>
+
+
+<script>
+    $(document).ready(function() {
+        var corporate_field = $('#corporate_field');
+        corporate_field.parent().hide();
+
+        $('#type').change(function() {
+            var selectedValue = $(this).val();
+            if (selectedValue === 'corporate') {
+                corporate_field.parent().show();
+                corporate_field.prop('required', true);
+            } else if (selectedValue === 'individual') {
+                corporate_field.parent().hide();
+                corporate_field.prop('required', false);
+            }
+        });
+    });
+</script>
+
+
+<script>
+    $(document).ready(function() {
+        $('#myForm').validate({
+            rules: {
+                phone: {
+                    required: true,
+                    pattern: /^[0-9+\(\)#\.\s\/ext-]+$/ // Adjust the pattern as per your requirements
+                },
+                password: {
+                    required: true,
+                    minlength: 8
+                },
+                confirm_password: {
+                    required: true,
+                    minlength: 8,
+                    equalTo: "#password"
+                },
+                email: {
+                    required: true,
+                    email: true
+                },
+            },
+            messages: {
+                phone: {
+                    required: 'Please enter a phone number',
+                    pattern: 'Please enter a valid phone number'
+                },
+                password: {
+                    required: " Please enter a password",
+                    minlength: "Password is too short!! Your password must be consist of at least 8 characters"
+                },
+                confirm_password: {
+                    required: " Please enter a password",
+                    minlength: " Your password must be consist of at least 8 characters",
+                    equalTo: " Please enter the same password as above"
+                },
+            }
+        });
+    });
+</script>
+
+
 
 
 </body>
