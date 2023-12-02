@@ -14,14 +14,14 @@ if (isset($_SESSION['user']))
             header('Location: admin/index.php');
             exit();
         }
-        else if($_SESSION['userType'] == 'e')
+        else if($_SESSION['userType'] == 'd')
         {
-            header('Location: employee/index.php');
+            header('Location: donator/index.php');
             exit();
         }
-        else if($_SESSION['userType'] == 's')
+        else if($_SESSION['userType'] == 'r')
         {
-            header('Location: student/index.php');
+            header('Location: receiver/index.php');
             exit();
         }
     }
@@ -64,13 +64,13 @@ if (isset($_SESSION['user']))
                 $errors[] = lang("user not found");
             }
         }
-        else if($userType == 'e')
+        else if($userType == 'd')
         {
-            $employees = select("select * from employee where email like '$email';");
-            if(count($employees) > 0)
+            $donators = select("select * from donator where email like '$email';");
+            if(count($donators) > 0)
             {
-                $result = $employees[0]['email'];
-                $password = $employees[0]['password'];
+                $result = $donators[0]['email'];
+                $password = $donators[0]['password'];
             }
             else
             {
@@ -79,13 +79,13 @@ if (isset($_SESSION['user']))
                 $errors[] = lang("user not found");
             }
         }
-        else if($userType == 's')
+        else if($userType == 'r')
         {
-            $students = select("select * from student where email like '$email';");
-            if(count($students) > 0)
+            $receivers = select("select * from receiver where email like '$email';");
+            if(count($receivers) > 0)
             {
-                $result = $students[0]['email'];
-                $password = $students[0]['password'];
+                $result = $receivers[0]['email'];
+                $password = $receivers[0]['password'];
             }
             else
             {
