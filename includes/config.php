@@ -200,11 +200,7 @@
   }
 
   function isAdmin() { if(getLoginType() == 'a') return true; }
-//   function isEngineer() { if(getLoginType() == 'e') return true; }
-  function isEmployee() { if(getLoginType() == 'e') return true; }
   function isDonator() { if(getLoginType() == 'd') return true; }
-//   function isCustomer() { if(getLoginType() == 'c') return true; }
-  function isStudent() { if(getLoginType() == 's') return true; }
   function isReceiver() { if(getLoginType() == 'r') return true; }
   function getLoginEmail() { return $_SESSION['user'] ;}
 
