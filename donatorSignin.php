@@ -74,7 +74,7 @@
       if(count($errors) == 0)
       {
         
-        $webUser = addWebUser($email,'e');
+        $webUser = addWebUser($email,'d');
         if($webUser == true)
         {
             $add = addDonator( $type, $name, $corporate_field, $phone, $email, $password, 0);
