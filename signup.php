@@ -1,7 +1,6 @@
 <?php
   session_start();
   include('includes/lib.php');
-  include('includes/service.php');
   $pageTitle = "New Registeration";
 
   ?>
