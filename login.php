@@ -12,7 +12,7 @@ if (isset($_SESSION['user']))
             header('Location: admin/index.php');
             exit();
         }
-        else if($_SESSION['userType'] == 'e')
+        else if($_SESSION['userType'] == 'd')
         {
             header('Location: donator/index.php');
             exit();
@@ -109,7 +109,7 @@ if (isset($_SESSION['user']))
                 // {
                 //     $_SESSION["userID"] = $employees[0]['id'];
                 //     $_SESSION["user"] = $email;
-                //     $_SESSION["userType"] = 'e';
+                //     $_SESSION["userType"] = 'd';
                 //     $_SESSION['success'] = "Welcome ".$employees[0]['first_name'] ." ". $employees[0]['last_name'] ;
                 //     header('Location: employee/index.php');
                 // }
